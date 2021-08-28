@@ -1,0 +1,51 @@
+use cases
+
+Customer
+1 - see products listing
+	1.1 - home
+ 
+2 - add products on cart
+	2.1 - see products listing
+	2.2 - click on add button
+	2.3 - system: displays message product added
+	2.4 - system: updates the listing
+
+3 - remove products from cart
+	3.1 - call use case 2
+	3.2 - access cart page
+	3.3 - click on remove product button
+	3.4 - system: displays message product removed
+	3.5 - system: updates the cart listing
+  
+4 - increase / decrease product quantity on cart
+	4.1 - call use case 2
+	4.2 - access cart page
+	4.3 - click on increase / decrease quantity
+	4.4 - system: reserves / releases reservation as needed
+  
+5 - advance cart checkout
+	5.1 - call use case 2
+	5.2 - system: shows payment confirmation page
+
+6 - confirm payment
+	6.1 - call use case 5
+	6.2 - user inform card data
+	6.3 - user click on confirm payment button
+	6.5 - system: starts payment flow
+	6.6 - system: validates basic card information
+	6.7 - system: calls anti-fraud system
+	6.8 - system: calls payment system to effective the payment	
+	6.9 - system: calls stock system to decrease stock number
+	6.10 - system: shows success message
+
+7 - confirm payment, invalid card
+	7.1 - call use case 5
+	7.2 - user inform card data
+	7.3 - user click on confirm payment button
+	7.4 - system: starts payment flow
+	7.5 - system: validates basic card information
+	7.6 - system: calls anti-fraud system
+	7.7 - anti-fraud: retrieves invalid	
+	7.8 - system: refound client if payment was done
+	7.9 - system: shows invalid card error
+	

@@ -1,0 +1,20 @@
+Payment flow
+
+- Customer
+ - see products listing with prices
+ - select products and quantities and put then into the cart
+ - cart checkout
+ - inform payment data
+ - confirm payment
+ - check stock of products beign decreased
+
+
+Obs: 
+ - System should reserve stock when a product is selected
+ - System should validate payment data on anti-fraud system
+ - System should descrease stock when payment has been approved
+ - System should create a new invoice when payment has been approved
+ - System should start shipping process when payment has been approved
+ - the user must receive a feedback on the payment flow in at maximun 1 second
+ - the anti-fraud system is a legacy and takes almost 1 second to respond
+ 
