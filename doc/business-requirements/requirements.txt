@@ -16,5 +16,5 @@ Obs:
  - System should create a new invoice when payment has been approved
  - System should start shipping process when payment has been approved
  - the user must receive a feedback on the payment flow in at maximun 1 second
- - the anti-fraud system is a legacy and takes almost 1 second to respond
+ - the anti-fraud system is a vendor and takes almost 1 second to respond
  
