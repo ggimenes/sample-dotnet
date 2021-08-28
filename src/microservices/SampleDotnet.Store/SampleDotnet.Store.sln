@@ -1,0 +1,78 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31624.102
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleDotnet.Store.Api", "SampleDotnet.Store.Api\SampleDotnet.Store.Api.csproj", "{E956527D-2815-44FD-A79E-3934D77C04DB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Inbound", "1 - Inbound", "{34C8CD81-6F71-4543-8842-B7D2A309E024}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Application", "2 - Application", "{33EC5D85-4010-4A7F-B6EA-B457A7FBAC35}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Domain", "3 - Domain", "{E96EE324-3162-4A04-B5E7-312E62F2CFAF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Infra", "4 - Infra", "{8763184A-05A2-4D7C-BD37-438C8A77890E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleDotnet.Store.Workflows", "SampleDotnet.Store.Workflows\SampleDotnet.Store.Workflows.csproj", "{326260EC-CCA1-47F4-8526-602CE246700A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleDotnet.Store.Consumers", "SampleDotnet.Store.Consumers\SampleDotnet.Store.Consumers.csproj", "{AAA4B5F8-7741-498D-9638-62B2552F0E75}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleDotnet.Store.AppService", "SampleDotnet.Store.AppService\SampleDotnet.Store.AppService.csproj", "{FB044134-327A-449C-89C2-AE54499FE3DA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleDotnet.Store.Domain", "SampleDotnet.Store.Domain\SampleDotnet.Store.Domain.csproj", "{8C14963F-0527-4216-BC1C-B05281A4462B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleDotnet.Store.Infra.Data", "SampleDotnet.Store.Infra.Data\SampleDotnet.Store.Infra.Data.csproj", "{9D12A203-94FD-4E85-B48C-61A571A3A3DB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleDotnet.Store.Infra.IoC.Bootstrapper", "SampleDotnet.Store.Infra.IoC.Bootstrapper\SampleDotnet.Store.Infra.IoC.Bootstrapper.csproj", "{C025C7E9-C4E7-4E89-B440-68550ED3F024}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E956527D-2815-44FD-A79E-3934D77C04DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E956527D-2815-44FD-A79E-3934D77C04DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E956527D-2815-44FD-A79E-3934D77C04DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E956527D-2815-44FD-A79E-3934D77C04DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{326260EC-CCA1-47F4-8526-602CE246700A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{326260EC-CCA1-47F4-8526-602CE246700A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{326260EC-CCA1-47F4-8526-602CE246700A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{326260EC-CCA1-47F4-8526-602CE246700A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AAA4B5F8-7741-498D-9638-62B2552F0E75}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AAA4B5F8-7741-498D-9638-62B2552F0E75}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AAA4B5F8-7741-498D-9638-62B2552F0E75}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AAA4B5F8-7741-498D-9638-62B2552F0E75}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB044134-327A-449C-89C2-AE54499FE3DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB044134-327A-449C-89C2-AE54499FE3DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB044134-327A-449C-89C2-AE54499FE3DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB044134-327A-449C-89C2-AE54499FE3DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C14963F-0527-4216-BC1C-B05281A4462B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C14963F-0527-4216-BC1C-B05281A4462B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C14963F-0527-4216-BC1C-B05281A4462B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C14963F-0527-4216-BC1C-B05281A4462B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9D12A203-94FD-4E85-B48C-61A571A3A3DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D12A203-94FD-4E85-B48C-61A571A3A3DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D12A203-94FD-4E85-B48C-61A571A3A3DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D12A203-94FD-4E85-B48C-61A571A3A3DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C025C7E9-C4E7-4E89-B440-68550ED3F024}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C025C7E9-C4E7-4E89-B440-68550ED3F024}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C025C7E9-C4E7-4E89-B440-68550ED3F024}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C025C7E9-C4E7-4E89-B440-68550ED3F024}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E956527D-2815-44FD-A79E-3934D77C04DB} = {34C8CD81-6F71-4543-8842-B7D2A309E024}
+		{326260EC-CCA1-47F4-8526-602CE246700A} = {33EC5D85-4010-4A7F-B6EA-B457A7FBAC35}
+		{AAA4B5F8-7741-498D-9638-62B2552F0E75} = {34C8CD81-6F71-4543-8842-B7D2A309E024}
+		{FB044134-327A-449C-89C2-AE54499FE3DA} = {33EC5D85-4010-4A7F-B6EA-B457A7FBAC35}
+		{8C14963F-0527-4216-BC1C-B05281A4462B} = {E96EE324-3162-4A04-B5E7-312E62F2CFAF}
+		{9D12A203-94FD-4E85-B48C-61A571A3A3DB} = {8763184A-05A2-4D7C-BD37-438C8A77890E}
+		{C025C7E9-C4E7-4E89-B440-68550ED3F024} = {8763184A-05A2-4D7C-BD37-438C8A77890E}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {05D122CC-B47D-4552-9E5A-CA17C388E1A6}
+	EndGlobalSection
+EndGlobal
