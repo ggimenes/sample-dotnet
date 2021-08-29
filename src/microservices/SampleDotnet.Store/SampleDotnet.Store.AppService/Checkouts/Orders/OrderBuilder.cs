@@ -1,5 +1,6 @@
 ﻿using SampleDotnet.Contracts.Store.Checkouts.Orders;
 using SampleDotnet.DDD;
+using SampleDotnet.DDD.Abstractions;
 using SampleDotnet.Store.Domain.Checkouts.Orders;
 using System;
 using System.Linq;
@@ -9,9 +10,9 @@ namespace SampleDotnet.Store.AppService.Checkouts.Orders
     public class OrderBuilder : IOrderBuilder
     {
         private Order _order;
-        private Notification _notification;
+        private INotification _notification;
 
-        public OrderBuilder(Notification notification)
+        public OrderBuilder(INotification notification)
         {
             _notification = notification;
         }

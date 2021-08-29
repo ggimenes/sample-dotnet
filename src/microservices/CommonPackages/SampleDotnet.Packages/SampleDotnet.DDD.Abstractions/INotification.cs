@@ -19,5 +19,10 @@ namespace SampleDotnet.DDD.Abstractions
         void LogTrace(object sender, string message, object additionalData = null);
         string GetValidationErrorsFormatted();
         IEnumerable<string> GetValidationErrors();
+        INotification Combine(INotification b);
+        public static INotification operator +(INotification a, INotification b)
+        {
+            return a.Combine(b);
+        }
     }
 }

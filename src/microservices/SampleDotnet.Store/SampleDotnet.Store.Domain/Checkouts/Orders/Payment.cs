@@ -15,7 +15,7 @@ namespace SampleDotnet.Store.Domain.Checkouts.Orders
         public int SecurityCode { get; private set; }
         public decimal Value { get; private set; }
 
-        public Notification Notification { get; set; } = new Notification();
+        public INotification Notification { get; set; } = new Notification();
 
         private Payment()
         {
@@ -59,6 +59,7 @@ namespace SampleDotnet.Store.Domain.Checkouts.Orders
 
     public enum PaymentMethod
     {
+        None = 0,
         Credit
     }
 }

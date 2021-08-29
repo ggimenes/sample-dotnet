@@ -31,11 +31,14 @@ namespace SampleDotnet.Store.AppService.Checkouts.Orders
 
             Payment payment = CreatePayment(request);
 
+            _notificationHandler.Notification += order.Notification;
+            _notificationHandler.Notification += payment.Notification;
             if (_notificationHandler.Notification.HasErrors)
                 return default;
 
             order.Accept(payment);
 
+            _notificationHandler.Notification += order.Notification;
             if (_notificationHandler.Notification.HasErrors)
                 return default;
 

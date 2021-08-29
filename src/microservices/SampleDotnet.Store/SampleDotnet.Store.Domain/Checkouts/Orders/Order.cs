@@ -10,9 +10,9 @@ namespace SampleDotnet.Store.Domain.Checkouts.Orders
 {
     public class Order : Entity
     {
-        private List<OrderItem> _items;
+        private List<OrderItem> _items = new List<OrderItem>();
 
-        public Notification Notification { get; set; } = new Notification();
+        public INotification Notification { get; set; } = new Notification();
 
         public IEnumerable<OrderItem> Items { get => _items; private set => _items = value.ToList(); }
         public DateTime CreatedAt { get; private set; }

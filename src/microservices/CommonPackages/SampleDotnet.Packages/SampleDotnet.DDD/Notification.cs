@@ -125,6 +125,15 @@ namespace SampleDotnet.DDD
             _logs.Add(entry);
         }
 
+        public INotification Combine(INotification b)
+        {
+            _events.AddRange(b.Events);
+            _logs.AddRange(b.Logs);
+            ValidationResult.Errors.AddRange(b.GetValidationErrors());
+
+            return this;
+        }
+
         public static Notification operator +(Notification a, Notification b)
         {
             a._events.AddRange(b.Events);

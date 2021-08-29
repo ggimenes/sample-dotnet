@@ -1,4 +1,5 @@
 ﻿using SampleDotnet.DDD;
+using SampleDotnet.DDD.Abstractions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ namespace SampleDotnet.Store.Domain.Checkouts.Orders
 {
     public class OrderItem
     {
-        public Notification Notification { get; set; } = new Notification();
+        public INotification Notification { get; set; } = new Notification();
         public Guid Id { get; private set; }
         public Guid ProductId { get; private set; }
         public int Quantity { get; private set; }

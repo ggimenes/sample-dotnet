@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,10 +10,10 @@ namespace SampleDotnet.Store.Infra.IoC.Bootstrapper
 {
     public static class MiddlewareExtensions
     {
-        public static IServiceCollection AddProjectServices(this IServiceCollection services)
+        public static IServiceCollection AddProjectServices(this IServiceCollection services, IConfiguration configuration)
         {
             return new ContainerConfigurator()
-                .AddServices(services);
+                .AddServices(services, configuration);
         }
     }
 }

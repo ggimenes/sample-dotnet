@@ -15,10 +15,11 @@ namespace SampleDotnet.DDD
 
         public INotification Notification { get; set; }
 
-        public NotificationHandler(IEventDispatcher eventDispatcher, ILoggerFactory factory)
+        public NotificationHandler(IEventDispatcher eventDispatcher, ILoggerFactory factory, INotification notification)
         {
             this._eventDispatcher = eventDispatcher;
             this._factory = factory;
+            Notification = notification;
         }
 
         public async Task DispatchAndFlush(Guid correlationId)
