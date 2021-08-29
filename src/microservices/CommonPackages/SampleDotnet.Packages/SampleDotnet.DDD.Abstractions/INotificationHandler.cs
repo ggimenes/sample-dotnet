@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 
 namespace SampleDotnet.DDD.Abstractions
 {
@@ -9,6 +10,6 @@ namespace SampleDotnet.DDD.Abstractions
         /// <summary>
         /// Dispatch events and flush log records
         /// </summary>
-        Task DispatchAndFlush();
+        Task DispatchAndFlush(Guid correlationId);
     }
 }

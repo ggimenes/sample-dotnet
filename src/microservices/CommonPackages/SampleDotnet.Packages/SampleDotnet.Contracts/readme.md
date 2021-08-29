@@ -1,0 +1,1 @@
+// author's remarks: this project sharing events and commands is needed to integrate messages using Masstransit. This tool inferes on class name and namespaces to create bindings, using RabbitMq for example.

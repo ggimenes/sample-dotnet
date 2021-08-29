@@ -1,14 +1,11 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Checkouts\" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <ProjectReference Include="..\..\CommonPackages\SampleDotnet.Packages\SampleDotnet.Contracts\SampleDotnet.Contracts.csproj" />
     <ProjectReference Include="..\SampleDotnet.Store.Domain\SampleDotnet.Store.Domain.csproj" />
     <ProjectReference Include="..\SampleDotnet.Store.Infra.Data\SampleDotnet.Store.Infra.Data.csproj" />
   </ItemGroup>

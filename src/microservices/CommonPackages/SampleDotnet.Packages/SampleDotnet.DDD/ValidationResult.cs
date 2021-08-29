@@ -21,5 +21,14 @@ namespace SampleDotnet.DDD
         {
             return string.Join(Environment.NewLine, Errors.ToArray());
         }
+
+        public static ValidationResult operator +(ValidationResult a, ValidationResult b)
+        {
+            a.Errors.AddRange(b.Errors);
+
+            a.HasErrors = a.Errors.Any();
+
+            return a;
+        }
     }
 }

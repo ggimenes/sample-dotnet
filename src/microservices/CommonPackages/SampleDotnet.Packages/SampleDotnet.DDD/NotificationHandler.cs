@@ -21,15 +21,29 @@ namespace SampleDotnet.DDD
             this._factory = factory;
         }
 
-        public async Task DispatchAndFlush()
+        public async Task DispatchAndFlush(Guid correlationId)
+        {
+            FlushLogs();
+
+            await DispatchEvents(correlationId);
+        }
+
+        private async Task DispatchEvents(Guid correlationId)
+        {
+            Notification.Events
+                            .ToList()
+                            .ForEach(x => x.CorrelationId = correlationId);
+
+            await _eventDispatcher.Dispatch(Notification.Events);
+        }
+
+        private void FlushLogs()
         {
             foreach (var log in Notification.Logs)
             {
                 var logger = _factory.CreateLogger(log.Sender.GetType().FullName);
                 logger.Log(log.LogLevel, new EventId(), log.AdditionalData, log.Exception, (s, ex) => log.Message);
             }
-
-            await _eventDispatcher.Dispatch(Notification.Events);
         }
     }
 }

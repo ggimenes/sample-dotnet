@@ -12,11 +12,11 @@ namespace SampleDotnet.DDD
     public class Notification : INotification
     {
         private readonly List<IDomainEvent> _events = new List<IDomainEvent>();
-        private readonly List<LogEntry> _logs = new List<LogEntry>();
+        private readonly List<ILogEntry> _logs = new List<ILogEntry>();
 
         public IEnumerable<IDomainEvent> Events => _events;
         public IEnumerable<ILogEntry> Logs => _logs;
-        public ValidationResult ValidationResult => new ValidationResult();
+        public ValidationResult ValidationResult { get; private set; } = new ValidationResult();
 
         public bool HasErrors => ValidationResult.HasErrors;
 
@@ -118,6 +118,15 @@ namespace SampleDotnet.DDD
             };
 
             _logs.Add(entry);
+        }
+
+        public static Notification operator +(Notification a, Notification b)
+        {
+            a._events.AddRange(b.Events);
+            a._logs.AddRange(b.Logs);
+            a.ValidationResult += b.ValidationResult;
+
+            return a;
         }
     }
 }
