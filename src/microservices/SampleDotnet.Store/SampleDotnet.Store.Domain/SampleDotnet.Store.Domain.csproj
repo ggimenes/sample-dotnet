@@ -8,4 +8,9 @@
     <Folder Include="Checkouts\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\CommonPackages\SampleDotnet.Packages\SampleDotnet.DDD.Abstractions\SampleDotnet.DDD.Abstractions.csproj" />
+    <ProjectReference Include="..\..\CommonPackages\SampleDotnet.Packages\SampleDotnet.DDD\SampleDotnet.DDD.csproj" />
+  </ItemGroup>
+
 </Project>

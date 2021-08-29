@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\SampleDotnet.DDD.Abstractions\SampleDotnet.DDD.Abstractions.csproj" />
+    <ProjectReference Include="..\SampleDotnet.MongoDb\SampleDotnet.MongoDb.csproj" />
   </ItemGroup>
 
 </Project>

@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\SampleDotnet.Store.AppService\SampleDotnet.Store.AppService.csproj" />
+    <ProjectReference Include="..\SampleDotnet.Store.Infra.IoC.Bootstrapper\SampleDotnet.Store.Infra.IoC.Bootstrapper.csproj" />
   </ItemGroup>
 
 </Project>

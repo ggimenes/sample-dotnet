@@ -10,7 +10,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\SampleDotnet.Store.Domain\SampleDotnet.Store.Domain.csproj" />
-    <ProjectReference Include="..\SampleDotnet.Store.Infra\SampleDotnet.Store.Infra.Data.csproj" />
+    <ProjectReference Include="..\SampleDotnet.Store.Infra.Data\SampleDotnet.Store.Infra.Data.csproj" />
   </ItemGroup>
 
 </Project>
