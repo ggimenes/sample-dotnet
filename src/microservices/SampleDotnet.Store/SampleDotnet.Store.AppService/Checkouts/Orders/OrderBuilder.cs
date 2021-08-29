@@ -26,6 +26,9 @@ namespace SampleDotnet.Store.AppService.Checkouts.Orders
                 return this;
             }
 
+            // author's remarks: Dto to domain maps when being more strict with DDD rules usually can't be done
+            // using AutoMapper, otherwise the domain will suffer with lack of semantical methods and lack of immutability constraints
+
             var firstItem = submitOrderCommand.Items.First();
             _order = Order.CreateOrder(
                 submitOrderCommand.CreatedAt,

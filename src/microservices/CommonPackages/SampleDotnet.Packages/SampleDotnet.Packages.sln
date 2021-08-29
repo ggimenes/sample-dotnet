@@ -13,7 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SampleDotnet.DDD.Abstractio
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SampleDotnet.Contracts", "SampleDotnet.Contracts\SampleDotnet.Contracts.csproj", "{6F659568-3D10-45EE-B857-23B3FD3362AC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleDotnet.DDD.Data.MongoDb", "SampleDotnet.DDD.Data.MongoDb\SampleDotnet.DDD.Data.MongoDb.csproj", "{1D75C74B-80CD-4862-8BC9-DC7BF29E76A3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SampleDotnet.DDD.Data.MongoDb", "SampleDotnet.DDD.Data.MongoDb\SampleDotnet.DDD.Data.MongoDb.csproj", "{1D75C74B-80CD-4862-8BC9-DC7BF29E76A3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleDotnet.AspNet", "SampleDotnet.AspNet\SampleDotnet.AspNet.csproj", "{F3246F25-439E-462B-9FC7-80A7BE0BE2D9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{1D75C74B-80CD-4862-8BC9-DC7BF29E76A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1D75C74B-80CD-4862-8BC9-DC7BF29E76A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1D75C74B-80CD-4862-8BC9-DC7BF29E76A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F3246F25-439E-462B-9FC7-80A7BE0BE2D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3246F25-439E-462B-9FC7-80A7BE0BE2D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3246F25-439E-462B-9FC7-80A7BE0BE2D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F3246F25-439E-462B-9FC7-80A7BE0BE2D9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

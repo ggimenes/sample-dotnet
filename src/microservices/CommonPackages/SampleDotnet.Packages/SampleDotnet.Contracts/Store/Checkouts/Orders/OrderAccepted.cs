@@ -13,6 +13,13 @@ namespace SampleDotnet.Contracts.Store.Checkouts.Orders
         public DateTime CreatedAt { get; set; }
         public Guid CustomerId { get; set; }
         public IEnumerable<OrderItem> Items { get; set; }
+        public decimal TotalOrder { get; set; }
+        public string PaymentMethod { get; set; }
+        public string CardName { get; set; }
+        public string CardNumber { get; set; }
+        public DateTime CardExpiration { get; set; }
+        public int SecurityCode { get; set; }
+        public decimal TotalPayment { get; set; }
 
         public class OrderItem
         {

@@ -1,5 +1,6 @@
 ﻿using SampleDotnet.Contracts.Store.Checkouts.Orders;
 using SampleDotnet.DDD.Abstractions;
+using SampleDotnet.Store.AppService.Checkouts.Orders.DTOs;
 using SampleDotnet.Store.Domain.Checkouts.Orders;
 using System;
 using System.Threading.Tasks;
@@ -22,22 +23,48 @@ namespace SampleDotnet.Store.AppService.Checkouts.Orders
             this._orderRepository = orderRepository;
         }
 
-        public async Task<Guid> SubmitOrder(SubmitOrderCommand request)
+        public async Task<SubmitOrderResponseDTO> SubmitOrder(SubmitOrderCommand request)
         {
             var order = _orderBuilder
                 .FromCommand(request)
                 .Build();
 
-            if (_notificationHandler.Notification.HasErrors)
-                return await Task.FromResult(Guid.Empty);
+            Payment payment = CreatePayment(request);
 
-            order.Accept();
+            if (_notificationHandler.Notification.HasErrors)
+                return default;
+
+            order.Accept(payment);
+
+            if (_notificationHandler.Notification.HasErrors)
+                return default;
 
             await _orderRepository.Add(order);
 
+            // author's remarks: deferring domain events launching only after data has been stored
+
             await _notificationHandler.DispatchAndFlush(request.CorrelationId);
 
-            return order.Id;
+            return CreateResponse(request, order);
+        }
+
+        private SubmitOrderResponseDTO CreateResponse(SubmitOrderCommand request, Order order)
+        {
+            return new SubmitOrderResponseDTO()
+            {
+                CorrelationId = request.CorrelationId,
+                OrderId = order.Id
+            };
+        }
+
+        private Payment CreatePayment(SubmitOrderCommand request)
+        {
+            return Payment.Create(
+                request.Payment.CardName,
+                request.Payment.CardNumber,
+                request.Payment.Expiration,
+                request.Payment.SecurityCode,
+                request.Payment.Value);
         }
     }
 }

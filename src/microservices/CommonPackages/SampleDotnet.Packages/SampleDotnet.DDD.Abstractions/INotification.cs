@@ -17,6 +17,7 @@ namespace SampleDotnet.DDD.Abstractions
         void LogInfo(object sender, string message, object additionalData = null);
         void LogDebug(object sender, string message, object additionalData = null);
         void LogTrace(object sender, string message, object additionalData = null);
-        string GetValidationErrors();
+        string GetValidationErrorsFormatted();
+        IEnumerable<string> GetValidationErrors();
     }
 }

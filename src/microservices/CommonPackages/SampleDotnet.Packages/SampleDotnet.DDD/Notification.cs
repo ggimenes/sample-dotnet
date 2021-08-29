@@ -30,9 +30,14 @@ namespace SampleDotnet.DDD
             _events.Add(domainEvent);
         }
 
-        public string GetValidationErrors()
+        public string GetValidationErrorsFormatted()
         {
             return ValidationResult.ToString();
+        }
+
+        public IEnumerable<string> GetValidationErrors()
+        {
+            return ValidationResult.Errors;
         }
 
         public void LogDebug(object sender, string message, object additionalData = null)

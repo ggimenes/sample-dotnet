@@ -8,7 +8,7 @@ namespace SampleDotnet.Store.Domain.Checkouts.Orders
 {
     public static class EventFactory
     {
-        public static OrderAccepted CreateOrderAccepted(Order order)
+        public static OrderAccepted CreateOrderAccepted(Order order, Payment payment)
         {
             return new OrderAccepted
             {
@@ -20,7 +20,12 @@ namespace SampleDotnet.Store.Domain.Checkouts.Orders
                     Value = orderItem.Value
                 }),
                 CreatedAt = order.CreatedAt,
-                CustomerId = order.CustomerId
+                CustomerId = order.CustomerId,
+                PaymentMethod = payment.PaymentMethod.ToString(),
+                CardName = payment.CardName,
+                CardNumber = payment.CardNumber,
+                CardExpiration = payment.Expiration,
+                SecurityCode = payment.SecurityCode
             };
         }
     }

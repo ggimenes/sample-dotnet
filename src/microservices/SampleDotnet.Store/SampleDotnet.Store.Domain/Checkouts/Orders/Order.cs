@@ -17,6 +17,8 @@ namespace SampleDotnet.Store.Domain.Checkouts.Orders
         public IEnumerable<OrderItem> Items { get => _items; private set => _items = value.ToList(); }
         public DateTime CreatedAt { get; private set; }
         public Guid CustomerId { get; private set; }
+        public decimal Total { get; private set; }
+        public Payment Payment { get; set; }
 
         private Order()
         {
@@ -41,12 +43,24 @@ namespace SampleDotnet.Store.Domain.Checkouts.Orders
             var item = new OrderItem(productId, quantity, value);
             Notification += item.Notification;
             _items.Add(item);
+
+            Total += value * quantity;
         }
 
-        public void Accept()
+        public void Accept(Payment payment)
         {
             if (!Notification.HasErrors)
-                Notification.Event(EventFactory.CreateOrderAccepted(this));
+                return;
+
+            if (Total != payment.Value)
+            {
+                Notification.Error("The paid value differs from order total value");
+                return;
+            }
+
+            Payment = payment;
+
+            Notification.Event(EventFactory.CreateOrderAccepted(this, payment));
         }
 
         private void Validate()
