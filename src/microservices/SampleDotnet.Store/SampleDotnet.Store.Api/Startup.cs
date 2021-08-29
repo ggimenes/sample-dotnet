@@ -7,6 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using SampleDotnet.Store.Api.Swagger;
 using SampleDotnet.Store.Infra.IoC.Bootstrapper;
 using System;
 using System.Collections.Generic;
@@ -28,13 +29,12 @@ namespace SampleDotnet.Store.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "SampleDotnet.Store.Api", Version = "v1" });
-            });
+
+            // configure swagger
+            services.AddSwaggerSetup();
 
             // registering services starting from application
-            services.AddProjectServices();
+            services.AddProjectServices(Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

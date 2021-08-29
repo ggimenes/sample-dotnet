@@ -4,6 +4,10 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>C:\repo\sample-dotnet\src\microservices\SampleDotnet.Store\SampleDotnet.Store.AppService\SampleDotnet.Store.AppService.xml</DocumentationFile>
+  </PropertyGroup>
+
   <ItemGroup>
     <ProjectReference Include="..\..\CommonPackages\SampleDotnet.Packages\SampleDotnet.Contracts\SampleDotnet.Contracts.csproj" />
     <ProjectReference Include="..\SampleDotnet.Store.Domain\SampleDotnet.Store.Domain.csproj" />
