@@ -9,6 +9,12 @@
 # registry: exampleuser # dockerhub username or container registry hostname
 
 # define multiple services here
+
+extensions:
+#- name: zipkin
+- name: seq
+  logPath: ./.logs
+
 name: sample-dotnet
 services:
 
@@ -18,11 +24,35 @@ services:
     - port: 27017
       connectionString: "mongodb://${host}:${port}"
 
-- name: microservice1-api
-  project: microservices/Microservice1/Microservice1.Api/Microservice1.Api.csproj
+- name: financial-api
+  project: microservices/SampleDotnet.Financial/SampleDotnet.Financial.Api/SampleDotnet.Financial.Api.csproj
+  bindings:
+  - protocol: https
+    port: 5020
+   
+- name: security-api
+  project: microservices/SampleDotnet.Security/SampleDotnet.Security.Api/SampleDotnet.Security.Api.csproj
+  bindings:
+  - protocol: https
+    port: 5017
+    
+- name: shipment-api
+  project: microservices/SampleDotnet.Shipment/SampleDotnet.Shipment.Api/SampleDotnet.Shipment.Api.csproj
+  bindings:
+  - protocol: https
+    port: 5013
+    
+- name: store-api
+  project: microservices/SampleDotnet.Store/SampleDotnet.Store.Api/SampleDotnet.Store.Api.csproj
   bindings:
   - protocol: https
     port: 5001
+    
+- name: warehouse-api
+  project: microservices/SampleDotnet.Warehouse/SampleDotnet.Warehouse.Api/SampleDotnet.Warehouse.Api.csproj
+  bindings:
+  - protocol: https
+    port: 5007
     
 - name: sample-frontend
   dockerFile: frontend/sample-front/Dockerfile

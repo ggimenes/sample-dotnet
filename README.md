@@ -26,3 +26,12 @@ run:
 
 run image:
 "docker run -d --name rabbitmq -p 5672:5672 -p 15672:15672 --restart=always --hostname rabbitmq-master bitnami/rabbitmq:latest"
+
+
+**Seq (log server)**
+
+run image:
+"docker run --name seq -d --restart unless-stopped -e ACCEPT_EULA=Y -p 5341:80 datalust/seq:latest"
+
+UI:
+http://localhost:5341/

@@ -24,6 +24,7 @@ namespace SampleDotnet.Store.Api
 
             Log.Logger = new LoggerConfiguration()
                 .ReadFrom.Configuration(configuration)
+				.WriteTo.Seq("http://localhost:5341")
                 .CreateLogger();
 
             CreateHostBuilder(args).Build().Run();
