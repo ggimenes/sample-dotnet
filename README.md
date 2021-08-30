@@ -1,7 +1,8 @@
 
 
 # Documentation
-
+- [Business documentation page](https://github.com/ggimenes/sample-dotnet/tree/main/doc)
+- [Event Storming](https://github.com/ggimenes/sample-dotnet/tree/main/doc/diagrams/event-storming)
 
 # Instalation
 
