@@ -1,6 +1,8 @@
 
 # Sample project
-This is a sample of a microservice based project
+This is a sample of a microservice based project  
+
+Disclaimer: still is under development
 
 ## Tecnologies / Patterns
 - Kubernetes
