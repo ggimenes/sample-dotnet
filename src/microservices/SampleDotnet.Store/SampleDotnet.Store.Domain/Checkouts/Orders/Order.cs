@@ -1,4 +1,5 @@
-﻿using SampleDotnet.DDD;
+﻿using MongoDbGenericRepository.Models;
+using SampleDotnet.DDD;
 using SampleDotnet.DDD.Abstractions;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace SampleDotnet.Store.Domain.Checkouts.Orders
 {
-    public class Order : Entity
+    public class Order : Entity, IDocument
     {
         private List<OrderItem> _items = new List<OrderItem>();
 
@@ -19,6 +20,7 @@ namespace SampleDotnet.Store.Domain.Checkouts.Orders
         public Guid CustomerId { get; private set; }
         public decimal Total { get; private set; }
         public Payment Payment { get; set; }
+        public int Version { get; set; }
 
         private Order()
         {
@@ -49,7 +51,7 @@ namespace SampleDotnet.Store.Domain.Checkouts.Orders
 
         public void Accept(Payment payment)
         {
-            if (!Notification.HasErrors)
+            if (Notification.HasErrors)
                 return;
 
             if (Total != payment.Value)

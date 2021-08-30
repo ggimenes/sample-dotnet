@@ -8,8 +8,6 @@ namespace SampleDotnet.Contracts.Store.Checkouts.Orders
 {
     public class SubmitOrderCommand
     {
-        public Guid CorrelationId { get; set; } = Guid.NewGuid();
-
         public DateTime CreatedAt { get; set; }
         public Guid CustomerId { get; set; }
         public IEnumerable<OrderItem> Items { get; set; }

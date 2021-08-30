@@ -22,6 +22,15 @@ namespace SampleDotnet.DDD
             Notification = notification;
         }
 
+        public async Task<Guid> DispatchAndFlush()
+        {
+            Guid correlationId = new Guid();
+
+            await DispatchAndFlush(correlationId);
+
+            return correlationId;
+        }
+
         public async Task DispatchAndFlush(Guid correlationId)
         {
             FlushLogs();

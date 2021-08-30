@@ -24,7 +24,7 @@ namespace SampleDotnet.Store.AppService.Checkouts.Orders
         }
 
         public async Task<SubmitOrderResponseDTO> SubmitOrder(SubmitOrderCommand request)
-        {
+        {            
             var order = _orderBuilder
                 .FromCommand(request)
                 .Build();
@@ -46,16 +46,16 @@ namespace SampleDotnet.Store.AppService.Checkouts.Orders
 
             // author's remarks: deferring domain events launching only after data has been stored
 
-            await _notificationHandler.DispatchAndFlush(request.CorrelationId);
+            var correlationId = await _notificationHandler.DispatchAndFlush();
 
-            return CreateResponse(request, order);
+            return CreateResponse(correlationId, order);
         }
 
-        private SubmitOrderResponseDTO CreateResponse(SubmitOrderCommand request, Order order)
+        private SubmitOrderResponseDTO CreateResponse(Guid correlationId, Order order)
         {
             return new SubmitOrderResponseDTO()
             {
-                CorrelationId = request.CorrelationId,
+                CorrelationId = correlationId,
                 OrderId = order.Id
             };
         }

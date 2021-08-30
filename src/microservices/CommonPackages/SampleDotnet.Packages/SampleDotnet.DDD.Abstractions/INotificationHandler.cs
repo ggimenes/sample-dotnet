@@ -11,5 +11,9 @@ namespace SampleDotnet.DDD.Abstractions
         /// Dispatch events and flush log records
         /// </summary>
         Task DispatchAndFlush(Guid correlationId);
+        /// <summary>
+        /// Dispatch events and flush log records
+        /// </summary>
+        Task<Guid> DispatchAndFlush();
     }
 }

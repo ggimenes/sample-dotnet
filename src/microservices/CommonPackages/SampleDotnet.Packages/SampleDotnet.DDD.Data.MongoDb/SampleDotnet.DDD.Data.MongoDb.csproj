@@ -5,6 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="MongoDB.Driver" Version="2.13.1" />
+    <PackageReference Include="MongoDbGenericRepository" Version="1.4.7" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\SampleDotnet.DDD.Abstractions\SampleDotnet.DDD.Abstractions.csproj" />
     <ProjectReference Include="..\SampleDotnet.MongoDb\SampleDotnet.MongoDb.csproj" />
   </ItemGroup>

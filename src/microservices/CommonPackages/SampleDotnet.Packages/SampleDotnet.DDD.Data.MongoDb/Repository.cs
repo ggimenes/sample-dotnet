@@ -1,4 +1,7 @@
-﻿using SampleDotnet.DDD.Abstractions;
+﻿using MongoDB.Driver;
+using MongoDbGenericRepository;
+using MongoDbGenericRepository.Models;
+using SampleDotnet.DDD.Abstractions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,12 +10,22 @@ using System.Threading.Tasks;
 
 namespace SampleDotnet.DDD.Data.MongoDb
 {
-    public class Repository<T> : IRepository<T>
-        where T : IEntity
+    public class MongoRepository<T> : BaseMongoRepository, IRepository<T>
+        where T : IEntity, IDocument
     {
+        public MongoRepository(IMongoDatabase databaseBase)
+            :base(databaseBase)
+        {
+
+        }
+
+        public MongoRepository(string connectionString, string databaseName = null) : base(connectionString, databaseName)
+        {
+        }
+
         public Task Add(T entity)
         {
-            throw new NotImplementedException();
+            return base.AddOneAsync<T>(entity);
         }
 
         public Task<IEnumerable<T>> FindAll()
@@ -22,17 +35,17 @@ namespace SampleDotnet.DDD.Data.MongoDb
 
         public Task<T> FindById(Guid id)
         {
-            throw new NotImplementedException();
+            return base.GetOneAsync<T>(x => ((IDocument)x).Id == id);
         }
 
         public Task Remove(Guid id)
         {
-            throw new NotImplementedException();
+            return base.DeleteOneAsync<T>(x => ((IDocument)x).Id == id);
         }
 
         public Task Update(T entity)
         {
-            throw new NotImplementedException();
+            return base.UpdateOneAsync<T>(entity);
         }
     }
 }
