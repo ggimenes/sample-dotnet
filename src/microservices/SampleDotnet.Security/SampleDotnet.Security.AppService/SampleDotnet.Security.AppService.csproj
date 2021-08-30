@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>C:\repo\sample-dotnet\src\microservices\SampleDotnet.Security\SampleDotnet.Security.AppService\SampleDotnet.Security.AppService.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\CommonPackages\SampleDotnet.Packages\SampleDotnet.Contracts\SampleDotnet.Contracts.csproj" />
+    <ProjectReference Include="..\SampleDotnet.Security.Infra.Data\SampleDotnet.Security.Infra.Data.csproj" />
+  </ItemGroup>
+
+</Project>
