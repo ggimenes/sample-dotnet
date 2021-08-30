@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MassTransit.MongoDb" Version="7.2.2" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="5.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="5.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="5.0.0" />
+    <PackageReference Include="MassTransit.Extensions.DependencyInjection" Version="7.2.2" />
+    <PackageReference Include="MassTransit.RabbitMQ" Version="7.2.2" />
+    <PackageReference Include="MassTransit.AspNetCore" Version="7.2.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\CommonPackages\SampleDotnet.Packages\SampleDotnet.Contracts\SampleDotnet.Contracts.csproj" />
+    <ProjectReference Include="..\..\CommonPackages\SampleDotnet.Packages\SampleDotnet.DDD.Abstractions\SampleDotnet.DDD.Abstractions.csproj" />
+    <ProjectReference Include="..\..\CommonPackages\SampleDotnet.Packages\SampleDotnet.MasstransitConfiguration\SampleDotnet.MasstransitConfiguration.csproj" />
+    <ProjectReference Include="..\SampleDotnet.Warehouse.Consumers\SampleDotnet.Warehouse.Consumers.csproj" />
+  </ItemGroup>
+
+</Project>
