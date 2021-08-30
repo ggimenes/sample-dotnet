@@ -11,6 +11,13 @@
 # define multiple services here
 name: sample-dotnet
 services:
+
+- name: mongodb
+  image: mongo  
+  bindings:
+    - port: 27017
+      connectionString: "mongodb://${host}:${port}"
+
 - name: microservice1-api
   project: microservices/Microservice1/Microservice1.Api/Microservice1.Api.csproj
   bindings:
