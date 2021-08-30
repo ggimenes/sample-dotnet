@@ -1,4 +1,36 @@
 
+# Sample project
+This is a sample of a microservice based project  
+
+Disclaimer: still is under development
+
+## Tecnologies / Patterns
+- Kubernetes
+- Docker
+- Net 5.0
+- MongoDb
+- Masstransit
+- Seq
+- Serilog
+- Zipkin
+- Tye
+- RabbitMq
+- Swagger
+- SignalR 
+- Angular
+- Typescript
+- DDD
+- SOLID
+- Saga
+
+## Architecture Overview
+- 1 database per microservice
+- microservices based on bounded contexts
+- communication through queues using RabbitMq and Masstransit
+- Front-end communication using HTTP and SignalR
+- Resilience using retries
+- Centralized log server
+- Distributed trancing
 
 # Documentation
 - [Business documentation page](https://github.com/ggimenes/sample-dotnet/tree/main/doc)
@@ -12,7 +44,7 @@
 
 folder deploy/mongodb
 run:
-"docker build -t dockerfile/mongo:latest  ."
+"docker build -t mongo:latest  ."
 
 run image:
 "docker run -d --name mongo -p 27017:27017 dockerfile/mongo"
@@ -35,3 +67,26 @@ run image:
 
 UI:
 http://localhost:5341/
+
+**Tye**
+
+run:
+"dotnet tool install -g Microsoft.Tye --version 0.9.*"
+
+folder sample-dotnet/src
+run:
+"tye run --watch"
+
+# Prints
+
+**Seq**  
+![Seq](imgs/seq.JPG?raw=true "Seq")
+
+**Database per microservice**
+![database per microservice](imgs/database-per-microservice.JPG?raw=true "Database per microservice")
+
+**Saga**  
+![masstransit-saga](imgs/masstransit-saga.JPG?raw=true "Saga")
+
+**Tye Dashboard**  
+![Tye Dashboard](imgs/tye-dashboard.JPG?raw=true "Tye Dashboard")
