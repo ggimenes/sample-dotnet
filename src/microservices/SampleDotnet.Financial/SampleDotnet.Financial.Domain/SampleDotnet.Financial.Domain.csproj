@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MongoDbGenericRepository" Version="1.4.7" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\CommonPackages\SampleDotnet.Packages\SampleDotnet.Contracts\SampleDotnet.Contracts.csproj" />
+    <ProjectReference Include="..\..\CommonPackages\SampleDotnet.Packages\SampleDotnet.DDD.Abstractions\SampleDotnet.DDD.Abstractions.csproj" />
+    <ProjectReference Include="..\..\CommonPackages\SampleDotnet.Packages\SampleDotnet.DDD\SampleDotnet.DDD.csproj" />
+  </ItemGroup>
+
+</Project>

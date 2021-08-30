@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\CommonPackages\SampleDotnet.Packages\SampleDotnet.Contracts\SampleDotnet.Contracts.csproj" />
+    <ProjectReference Include="..\SampleDotnet.Financial.AppService\SampleDotnet.Financial.AppService.csproj" />
+  </ItemGroup>
+
+</Project>

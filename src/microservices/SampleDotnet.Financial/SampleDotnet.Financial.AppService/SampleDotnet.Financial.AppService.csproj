@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>C:\repo\sample-dotnet\src\microservices\SampleDotnet.Financial\SampleDotnet.Financial.AppService\SampleDotnet.Financial.AppService.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\CommonPackages\SampleDotnet.Packages\SampleDotnet.Contracts\SampleDotnet.Contracts.csproj" />
+    <ProjectReference Include="..\SampleDotnet.Financial.Domain\SampleDotnet.Financial.Domain.csproj" />
+    <ProjectReference Include="..\SampleDotnet.Financial.Infra.Data\SampleDotnet.Financial.Infra.Data.csproj" />
+  </ItemGroup>
+
+</Project>
