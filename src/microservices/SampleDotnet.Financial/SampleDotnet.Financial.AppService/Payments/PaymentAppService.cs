@@ -45,7 +45,7 @@ namespace SampleDotnet.Financial.AppService.Checkouts.Orders
             return CreateResponse(request.CorrelationId, payment);
         }
 
-        public async Task<Guid> ApprovePayment(RequestRefundCommand request)
+        public async Task<Guid> ApprovePayment(ApprovePaymentCommand request)
         {
             Payment payment = await _paymentRepository.FindById(request.PaymentId);            
 

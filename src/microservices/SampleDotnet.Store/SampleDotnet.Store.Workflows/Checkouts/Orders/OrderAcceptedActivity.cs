@@ -32,9 +32,9 @@ namespace SampleDotnet.Store.Workflows.Checkouts.Orders
 
         public async Task Execute(BehaviorContext<OrderState, OrderAccepted> context, Behavior<OrderState, OrderAccepted> next)
         {
-            var endpointSubmitPayment = await _sendEndpointProvider.GetSendEndpoint(new Uri("queue:submit-payment-queue"));
-            var endpointValidateFraud = await _sendEndpointProvider.GetSendEndpoint(new Uri("queue:validate-fraud-queue"));
-            var endpointReserveStock = await _sendEndpointProvider.GetSendEndpoint(new Uri("queue:reserve-stock-queue"));
+            var endpointSubmitPayment = await _sendEndpointProvider.GetSendEndpoint(new Uri("queue:submit-payment"));
+            var endpointValidateFraud = await _sendEndpointProvider.GetSendEndpoint(new Uri("queue:validate-fraud"));
+            var endpointReserveStock = await _sendEndpointProvider.GetSendEndpoint(new Uri("queue:reserve-stock"));
 
             await endpointSubmitPayment.Send(new SubmitPaymentCommand { CorrelationId = context.Instance.CorrelationId });
             await endpointValidateFraud.Send(new ValidateFraudCommand { CorrelationId = context.Instance.CorrelationId });

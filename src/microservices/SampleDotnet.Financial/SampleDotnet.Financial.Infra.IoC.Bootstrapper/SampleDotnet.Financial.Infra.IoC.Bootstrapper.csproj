@@ -5,6 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="10.1.1" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.1" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="5.0.0" />
   </ItemGroup>
 
@@ -12,6 +14,7 @@
     <ProjectReference Include="..\..\CommonPackages\SampleDotnet.Packages\SampleDotnet.DDD.Data.MongoDb\SampleDotnet.DDD.Data.MongoDb.csproj" />
     <ProjectReference Include="..\SampleDotnet.Financial.AppService\SampleDotnet.Financial.AppService.csproj" />
     <ProjectReference Include="..\SampleDotnet.Financial.Domain\SampleDotnet.Financial.Domain.csproj" />
+    <ProjectReference Include="..\SampleDotnet.Financial.Infra.Automapper\SampleDotnet.Financial.Infra.Automapper.csproj" />
     <ProjectReference Include="..\SampleDotnet.Financial.Infra.Data\SampleDotnet.Financial.Infra.Data.csproj" />
     <ProjectReference Include="..\SampleDotnet.Financial.Infra.Masstransit\SampleDotnet.Financial.Infra.Masstransit.csproj" />
   </ItemGroup>

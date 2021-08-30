@@ -8,7 +8,7 @@ namespace SampleDotnet.Financial.AppService.Checkouts.Orders
     public interface IPaymentAppService
     {
         Task<SubmitPaymentResponseDTO> ReceivePayment(SubmitPaymentCommand request);
-        Task<Guid> ApprovePayment(RequestRefundCommand request);
+        Task<Guid> ApprovePayment(ApprovePaymentCommand request);
         Task<Guid> RefundPayment(RequestRefundCommand request);
         Task<Guid> CancelPayment(CancelPaymentCommand request);
     }

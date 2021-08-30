@@ -24,9 +24,9 @@ namespace SampleDotnet.Financial.Infra.Masstransit
                 config.SetKebabCaseEndpointNameFormatter();
 
                 config.AddConsumer<SubmitPaymentConsumer>();
-                config.AddConsumer<ApprovePaymentConsumer>();
-                config.AddConsumer<RequestRefundConsumer>();
-                config.AddConsumer<CancelPaymentConsumer>();
+                config.AddConsumer<PaymentAcceptedConsumer>();
+                config.AddConsumer<RefundApplyedConsumer>();
+                config.AddConsumer<FraudDetectedConsumer>();                
 
                 config.UsingRabbitMq((context, cfg) =>
                 {
@@ -52,7 +52,7 @@ namespace SampleDotnet.Financial.Infra.Masstransit
                         h.PublisherConfirmation = true;
                     });
 
-                    cfg.ReceiveEndpoint("re.financial.submit.payment",e =>
+                    cfg.ReceiveEndpoint("submit-payment", e =>
                     {
                         e.ConcurrentMessageLimit = masstransitConfig.OrderStateMachine.ConcurrentMessageLimit;
                         e.PrefetchCount = masstransitConfig.OrderStateMachine.PrefetchCount;
@@ -60,28 +60,28 @@ namespace SampleDotnet.Financial.Infra.Masstransit
                         e.ConfigureConsumer<SubmitPaymentConsumer>(context);
                     });
 
-                    cfg.ReceiveEndpoint("re.financial.approve.payment", e =>
+                    cfg.ReceiveEndpoint(e =>
                     {
                         e.ConcurrentMessageLimit = masstransitConfig.OrderStateMachine.ConcurrentMessageLimit;
                         e.PrefetchCount = masstransitConfig.OrderStateMachine.PrefetchCount;
 
-                        e.ConfigureConsumer<ApprovePaymentConsumer>(context);
+                        e.ConfigureConsumer<PaymentAcceptedConsumer>(context);
                     });
 
-                    cfg.ReceiveEndpoint("re.financial.request.refund", e =>
+                    cfg.ReceiveEndpoint(e =>
                     {
                         e.ConcurrentMessageLimit = masstransitConfig.OrderStateMachine.ConcurrentMessageLimit;
                         e.PrefetchCount = masstransitConfig.OrderStateMachine.PrefetchCount;
 
-                        e.ConfigureConsumer<RequestRefundConsumer>(context);
+                        e.ConfigureConsumer<RefundApplyedConsumer>(context);
                     });
 
-                    cfg.ReceiveEndpoint("re.financial.cancel.payment", e =>
+                    cfg.ReceiveEndpoint(e =>
                     {
                         e.ConcurrentMessageLimit = masstransitConfig.OrderStateMachine.ConcurrentMessageLimit;
                         e.PrefetchCount = masstransitConfig.OrderStateMachine.PrefetchCount;
 
-                        e.ConfigureConsumer<CancelPaymentConsumer>(context);
+                        e.ConfigureConsumer<FraudDetectedConsumer>(context);
                     });
                 });
             });

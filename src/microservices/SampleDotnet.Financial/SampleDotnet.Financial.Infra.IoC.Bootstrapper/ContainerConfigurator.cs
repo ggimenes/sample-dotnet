@@ -6,6 +6,7 @@ using SampleDotnet.DDD.Abstractions;
 using SampleDotnet.DDD.Data.MongoDb;
 using SampleDotnet.Financial.AppService.Checkouts.Orders;
 using SampleDotnet.Financial.Domain.Payments;
+using SampleDotnet.Financial.Infra.Automapper;
 using SampleDotnet.Financial.Infra.Masstransit;
 using System;
 using System.Collections.Generic;
@@ -19,6 +20,10 @@ namespace SampleDotnet.Financial.Infra.IoC.Bootstrapper
     {
         public IServiceCollection AddServices(IServiceCollection services, IConfiguration configuration)
         {
+            // Automapper
+            services.AddAutoMapper(typeof(ConsumerMappingProfile));
+            AutoMapperConfiguration.RegisterMappings();
+
             // Masstransit            
             services.AddStoreMasstransit(configuration);
 
