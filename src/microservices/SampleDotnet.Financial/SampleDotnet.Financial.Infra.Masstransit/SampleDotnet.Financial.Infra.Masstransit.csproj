@@ -18,7 +18,7 @@
     <ProjectReference Include="..\..\CommonPackages\SampleDotnet.Packages\SampleDotnet.Contracts\SampleDotnet.Contracts.csproj" />
     <ProjectReference Include="..\..\CommonPackages\SampleDotnet.Packages\SampleDotnet.DDD.Abstractions\SampleDotnet.DDD.Abstractions.csproj" />
     <ProjectReference Include="..\..\CommonPackages\SampleDotnet.Packages\SampleDotnet.MasstransitConfiguration\SampleDotnet.MasstransitConfiguration.csproj" />
-    <ProjectReference Include="..\SampleDotnet.Financial.Workflows\SampleDotnet.Financial.Workflows.csproj" />
+    <ProjectReference Include="..\SampleDotnet.Financial.Consumers\SampleDotnet.Financial.Consumers.csproj" />
   </ItemGroup>
 
 </Project>

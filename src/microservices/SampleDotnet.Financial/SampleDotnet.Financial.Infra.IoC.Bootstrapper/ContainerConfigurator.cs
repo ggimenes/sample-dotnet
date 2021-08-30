@@ -5,7 +5,7 @@ using SampleDotnet.DDD;
 using SampleDotnet.DDD.Abstractions;
 using SampleDotnet.DDD.Data.MongoDb;
 using SampleDotnet.Financial.AppService.Checkouts.Orders;
-using SampleDotnet.Financial.Domain.Checkouts.Orders;
+using SampleDotnet.Financial.Domain.Payments;
 using SampleDotnet.Financial.Infra.Masstransit;
 using System;
 using System.Collections.Generic;
@@ -26,15 +26,14 @@ namespace SampleDotnet.Financial.Infra.IoC.Bootstrapper
             AddMongoDb(services, configuration);
 
             // AppService
-            services.AddTransient<IOrderBuilder, OrderBuilder>();
-            services.AddTransient<IOrderAppService, OrderAppService>();
+            services.AddTransient<IPaymentAppService, PaymentAppService>();
 
             // Domain
             services.AddScoped<INotification, Notification>();
             services.AddScoped<INotificationHandler, NotificationHandler>();
 
             // Data
-            services.AddTransient(typeof(IRepository<Order>), typeof(MongoRepository<Order>));
+            services.AddTransient(typeof(IRepository<Payment>), typeof(MongoRepository<Payment>));
 
             return services;
         }

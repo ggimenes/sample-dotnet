@@ -4,15 +4,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using SampleDotnet.MasstransitConfiguration;
-using SampleDotnet.Financial.Workflows.Checkouts.Orders;
 using System;
 using System.Security.Authentication;
-using MassTransit.MongoDbIntegration.Saga;
-using SampleDotnet.Contracts.Store.Checkouts.Orders;
-using SampleDotnet.Contracts.Financial.Payments;
-using SampleDotnet.Contracts.Security.Anti_Fraud;
-using SampleDotnet.Contracts.Shipment;
-using SampleDotnet.Contracts.Warehouse;
+using SampleDotnet.Financial.Consumers;
 
 namespace SampleDotnet.Financial.Infra.Masstransit
 {
@@ -29,10 +23,10 @@ namespace SampleDotnet.Financial.Infra.Masstransit
             {
                 config.SetKebabCaseEndpointNameFormatter();
 
-                config.AddSagaStateMachine<OrderStateMachine, OrderState>()
-                    .MongoDbRepository(configuration.GetSection("ConnectionString").Value, r => { });
-
-                config.AddActivitiesFromNamespaceContaining<OrderAcceptedActivity>();
+                config.AddConsumer<SubmitPaymentConsumer>();
+                config.AddConsumer<ApprovePaymentConsumer>();
+                config.AddConsumer<RequestRefundConsumer>();
+                config.AddConsumer<CancelPaymentConsumer>();
 
                 config.UsingRabbitMq((context, cfg) =>
                 {
@@ -58,27 +52,36 @@ namespace SampleDotnet.Financial.Infra.Masstransit
                         h.PublisherConfirmation = true;
                     });
 
-                    cfg.ReceiveEndpoint("re.store.order",e =>
+                    cfg.ReceiveEndpoint("re.financial.submit.payment",e =>
                     {
                         e.ConcurrentMessageLimit = masstransitConfig.OrderStateMachine.ConcurrentMessageLimit;
                         e.PrefetchCount = masstransitConfig.OrderStateMachine.PrefetchCount;
 
-                        e.ConfigureSaga<OrderState>(context, c =>
-                        {
-                            var partition = c.CreatePartitioner(masstransitConfig.OrderStateMachine.PartitionCount);
+                        e.ConfigureConsumer<SubmitPaymentConsumer>(context);
+                    });
 
-                            c.Message<OrderAccepted>(x => x.UsePartitioner(partition, m => m.Message.CorrelationId));
-                            c.Message<PaymentAccepted>(x => x.UsePartitioner(partition, m => m.Message.CorrelationId));
-                            c.Message<PaymentApproved>(x => x.UsePartitioner(partition, m => m.Message.CorrelationId));
-                            c.Message<RefundApplyed>(x => x.UsePartitioner(partition, m => m.Message.CorrelationId));
-                            c.Message<PaymentCanceled>(x => x.UsePartitioner(partition, m => m.Message.CorrelationId));
-                            c.Message<FraudDetected>(x => x.UsePartitioner(partition, m => m.Message.CorrelationId));
-                            c.Message<PaymentValidated>(x => x.UsePartitioner(partition, m => m.Message.CorrelationId));
-                            c.Message<ShipmentOrderCreated>(x => x.UsePartitioner(partition, m => m.Message.CorrelationId));
-                            c.Message<StockReserved>(x => x.UsePartitioner(partition, m => m.Message.CorrelationId));
-                            c.Message<StockReleased>(x => x.UsePartitioner(partition, m => m.Message.CorrelationId));
-                            c.Message<StockUpdated>(x => x.UsePartitioner(partition, m => m.Message.CorrelationId));
-                        });
+                    cfg.ReceiveEndpoint("re.financial.approve.payment", e =>
+                    {
+                        e.ConcurrentMessageLimit = masstransitConfig.OrderStateMachine.ConcurrentMessageLimit;
+                        e.PrefetchCount = masstransitConfig.OrderStateMachine.PrefetchCount;
+
+                        e.ConfigureConsumer<ApprovePaymentConsumer>(context);
+                    });
+
+                    cfg.ReceiveEndpoint("re.financial.request.refund", e =>
+                    {
+                        e.ConcurrentMessageLimit = masstransitConfig.OrderStateMachine.ConcurrentMessageLimit;
+                        e.PrefetchCount = masstransitConfig.OrderStateMachine.PrefetchCount;
+
+                        e.ConfigureConsumer<RequestRefundConsumer>(context);
+                    });
+
+                    cfg.ReceiveEndpoint("re.financial.cancel.payment", e =>
+                    {
+                        e.ConcurrentMessageLimit = masstransitConfig.OrderStateMachine.ConcurrentMessageLimit;
+                        e.PrefetchCount = masstransitConfig.OrderStateMachine.PrefetchCount;
+
+                        e.ConfigureConsumer<CancelPaymentConsumer>(context);
                     });
                 });
             });

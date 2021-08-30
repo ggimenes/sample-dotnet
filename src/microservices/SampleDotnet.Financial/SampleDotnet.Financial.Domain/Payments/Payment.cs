@@ -1,10 +1,11 @@
-﻿using SampleDotnet.DDD;
+﻿using MongoDbGenericRepository.Models;
+using SampleDotnet.DDD;
 using SampleDotnet.DDD.Abstractions;
 using System;
 
-namespace SampleDotnet.Financial.Domain.Checkouts.Orders
+namespace SampleDotnet.Financial.Domain.Payments
 {
-    public class Payment : Entity
+    public class Payment : Entity, IDocument
     {
         // author's remarks: could have many different payment methods. Accepting just credit for sake of simplicity
 
@@ -14,6 +15,8 @@ namespace SampleDotnet.Financial.Domain.Checkouts.Orders
         public DateTime Expiration { get; private set; }
         public int SecurityCode { get; private set; }
         public decimal Value { get; private set; }
+        public PaymentStatus Status { get; set; }
+        public int Version { get; set; }
 
         public INotification Notification { get; set; } = new Notification();
 
@@ -37,8 +40,56 @@ namespace SampleDotnet.Financial.Domain.Checkouts.Orders
             return payment;
         }
 
+        public void Accept()
+        {
+            if (Notification.HasErrors)
+                return;
+
+            Status = PaymentStatus.Accepted;
+
+            Notification.Event(EventFactory.CreatePaymentAccepted(this));
+        }
+
+        public void Process()
+        {
+            if (Notification.HasErrors)
+                return;
+
+            // rules to process the payment
+
+            Status = PaymentStatus.Approved;
+
+            Notification.Event(EventFactory.CreatePaymentApproved(this));
+        }
+
+        public void Refund()
+        {
+            if (Notification.HasErrors)
+                return;
+
+            Status = PaymentStatus.RefundApplyed;
+
+            Notification.Event(EventFactory.CreateRefundApplyed(this));
+        }
+
+        public void Cancel()
+        {
+            if (Notification.HasErrors)
+                return;
+
+            Status = PaymentStatus.Canceled;
+
+            Notification.Event(EventFactory.CreatePaymentCanceled(this));
+        }
+
         private void Validate()
         {
+            // Card validation could be done in depth, differs from Store validation for payments.
+            // The object struture also could be very different, because this is another bounded context
+            bool cardValid = CardNumber == "5555555555554444";
+            if (!cardValid)
+                Notification.Error("The card is invalid");
+
             if (string.IsNullOrWhiteSpace(CardName))
                 Notification.Error("The field 'CardName' is required");
 
@@ -54,12 +105,20 @@ namespace SampleDotnet.Financial.Domain.Checkouts.Orders
             if (Value <= 0)
                 Notification.Error("The field 'Value' is required");
         }
-
     }
 
     public enum PaymentMethod
     {
         None = 0,
         Credit
+    }
+
+    public enum PaymentStatus
+    {
+        None = 0,
+        Accepted,
+        Approved,
+        RefundApplyed,
+        Canceled
     }
 }

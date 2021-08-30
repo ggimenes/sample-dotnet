@@ -5,10 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Checkouts\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\SampleDotnet.Financial.Domain\SampleDotnet.Financial.Domain.csproj" />
   </ItemGroup>
 

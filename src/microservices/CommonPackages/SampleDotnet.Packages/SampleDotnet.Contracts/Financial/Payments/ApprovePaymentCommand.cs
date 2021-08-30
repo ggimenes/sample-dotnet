@@ -5,10 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SampleDotnet.Contracts.Security.Anti_Fraud
+namespace SampleDotnet.Contracts.Financial.Payments
 {
-    public class FraudDetected : IDomainEvent
+    public class ApprovePaymentCommand
     {
         public Guid CorrelationId { get; set; }
+        public Guid PaymentId { get; set; }
     }
 }

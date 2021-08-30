@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SampleDotnet.Financial.AppService.Checkouts.Orders.DTOs
+namespace SampleDotnet.Financial.AppService.Payments.DTOs
 {
-    public class SubmitOrderResponseDTO
+    public class SubmitPaymentResponseDTO
     {
         public Guid CorrelationId { get; set; }
         public Guid OrderId { get; set; }
