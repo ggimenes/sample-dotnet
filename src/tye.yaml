@@ -19,7 +19,7 @@ name: sample-dotnet
 services:
 
 - name: mongodb
-  image: mongo  
+  image: ggimenes/mongo  
   bindings:
     - port: 27017
       connectionString: "mongodb://${host}:${port}"
