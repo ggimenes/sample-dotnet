@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SampleDotnet.Contracts.Fiscal.Payments
+namespace SampleDotnet.Contracts.Warehouse
 {
-    public class PaymentCanceled
+    public class StockReleased
     {
+        public Guid CorrelationId { get; set; }
     }
 }

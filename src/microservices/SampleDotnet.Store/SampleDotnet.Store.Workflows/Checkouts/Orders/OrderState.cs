@@ -13,5 +13,8 @@ namespace SampleDotnet.Store.Workflows.Checkouts.Orders
         public DateTime CreatedAt { get; set; }
         public DateTime FinishedAt { get; set; }
         public int Version { get; set; }
+        public int PaymentPhaseEventReady { get; set; }
+        public int WorkflowPhaseEventReady { get; set; }
+        public int PaymentAbortEventReady { get; set; }
     }
 }

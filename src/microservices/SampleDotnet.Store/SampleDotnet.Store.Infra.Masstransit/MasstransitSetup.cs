@@ -3,12 +3,16 @@ using MassTransit;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
-using SampleDotnet.Contracts.Fiscal.Payments;
 using SampleDotnet.MasstransitConfiguration;
 using SampleDotnet.Store.Workflows.Checkouts.Orders;
 using System;
 using System.Security.Authentication;
 using MassTransit.MongoDbIntegration.Saga;
+using SampleDotnet.Contracts.Store.Checkouts.Orders;
+using SampleDotnet.Contracts.Financial.Payments;
+using SampleDotnet.Contracts.Security.Anti_Fraud;
+using SampleDotnet.Contracts.Shipment;
+using SampleDotnet.Contracts.Warehouse;
 
 namespace SampleDotnet.Store.Infra.Masstransit
 {
@@ -27,6 +31,8 @@ namespace SampleDotnet.Store.Infra.Masstransit
 
                 config.AddSagaStateMachine<OrderStateMachine, OrderState>()
                     .MongoDbRepository(configuration.GetSection("ConnectionString").Value, r => { });
+
+                config.AddActivitiesFromNamespaceContaining<OrderAcceptedActivity>();
 
                 config.UsingRabbitMq((context, cfg) =>
                 {
@@ -50,6 +56,29 @@ namespace SampleDotnet.Store.Infra.Masstransit
                         });
 
                         h.PublisherConfirmation = true;
+                    });
+
+                    cfg.ReceiveEndpoint("re.store.order",e =>
+                    {
+                        e.ConcurrentMessageLimit = masstransitConfig.OrderStateMachine.ConcurrentMessageLimit;
+                        e.PrefetchCount = masstransitConfig.OrderStateMachine.PrefetchCount;
+
+                        e.ConfigureSaga<OrderState>(context, c =>
+                        {
+                            var partition = c.CreatePartitioner(masstransitConfig.OrderStateMachine.PartitionCount);
+
+                            c.Message<OrderAccepted>(x => x.UsePartitioner(partition, m => m.Message.CorrelationId));
+                            c.Message<PaymentAccepted>(x => x.UsePartitioner(partition, m => m.Message.CorrelationId));
+                            c.Message<PaymentApproved>(x => x.UsePartitioner(partition, m => m.Message.CorrelationId));
+                            c.Message<RefundApplyed>(x => x.UsePartitioner(partition, m => m.Message.CorrelationId));
+                            c.Message<PaymentCanceled>(x => x.UsePartitioner(partition, m => m.Message.CorrelationId));
+                            c.Message<FraudDetected>(x => x.UsePartitioner(partition, m => m.Message.CorrelationId));
+                            c.Message<PaymentValidated>(x => x.UsePartitioner(partition, m => m.Message.CorrelationId));
+                            c.Message<ShipmentOrderCreated>(x => x.UsePartitioner(partition, m => m.Message.CorrelationId));
+                            c.Message<StockReserved>(x => x.UsePartitioner(partition, m => m.Message.CorrelationId));
+                            c.Message<StockReleased>(x => x.UsePartitioner(partition, m => m.Message.CorrelationId));
+                            c.Message<StockUpdated>(x => x.UsePartitioner(partition, m => m.Message.CorrelationId));
+                        });
                     });
                 });
             });

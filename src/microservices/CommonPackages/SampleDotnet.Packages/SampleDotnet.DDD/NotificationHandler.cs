@@ -24,7 +24,7 @@ namespace SampleDotnet.DDD
 
         public async Task<Guid> DispatchAndFlush()
         {
-            Guid correlationId = new Guid();
+            Guid correlationId = Guid.NewGuid();
 
             await DispatchAndFlush(correlationId);
 

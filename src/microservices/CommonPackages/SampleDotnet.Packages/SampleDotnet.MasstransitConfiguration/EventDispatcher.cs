@@ -21,7 +21,7 @@ namespace SampleDotnet.MasstransitConfiguration
         {
             foreach (var dEvent in domainEvents)
             {
-                await _publishEndpoint.Publish(dEvent);
+                await _publishEndpoint.Publish(dEvent, dEvent.GetType());
             }
         }
     }
