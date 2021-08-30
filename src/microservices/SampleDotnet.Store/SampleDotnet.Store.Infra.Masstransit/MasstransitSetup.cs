@@ -8,6 +8,7 @@ using SampleDotnet.MasstransitConfiguration;
 using SampleDotnet.Store.Workflows.Checkouts.Orders;
 using System;
 using System.Security.Authentication;
+using MassTransit.MongoDbIntegration.Saga;
 
 namespace SampleDotnet.Store.Infra.Masstransit
 {
@@ -25,7 +26,7 @@ namespace SampleDotnet.Store.Infra.Masstransit
                 config.SetKebabCaseEndpointNameFormatter();
 
                 config.AddSagaStateMachine<OrderStateMachine, OrderState>()
-                    .InMemoryRepository();
+                    .MongoDbRepository(configuration.GetSection("ConnectionString").Value, r => { });
 
                 config.UsingRabbitMq((context, cfg) =>
                 {
@@ -52,6 +53,8 @@ namespace SampleDotnet.Store.Infra.Masstransit
                     });
                 });
             });
+
+            services.AddMassTransitHostedService();
 
             return services;
         }
