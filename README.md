@@ -50,7 +50,7 @@ run:
 "docker build -t mongo:latest  ."
 
 run image:
-"docker run -d --name mongo -p 27017:27017 dockerfile/mongo"
+"docker run -d --name mongo -p 27017:27017 mongo"
 
 
 **RabbitMq**
