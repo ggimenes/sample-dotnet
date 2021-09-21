@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <RootNamespace>SampleDotnet.MassTransit.ActivityTracing</RootNamespace>
+    <AssemblyName>SampleDotnet.MassTransit.ActivityTracing</AssemblyName>
+    <Authors>Wiebe Tijsma</Authors>
+    <RepositoryUrl>https://github.com/zidad/MassTransit.ActivityTracing</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <NeutralLanguage>en</NeutralLanguage>
+    <Description>MassTransit extension to configure distributed trace propagation between asynchronous message broker operations.</Description>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <Version>0.2</Version>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MassTransit" Version="7.2.2" />
+    <PackageReference Include="MassTransit.RabbitMQ" Version="7.2.2" />
+    <PackageReference Include="OpenTelemetry" Version="1.1.0" />
+    <PackageReference Include="OpenTelemetry.Exporter.OpenTelemetryProtocol" Version="1.1.0" />
+  </ItemGroup>
+
+</Project>

@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\SampleDotnet.DDD.Abstractions\SampleDotnet.DDD.Abstractions.csproj" />
+    <ProjectReference Include="..\SampleDotnet.MassTransit.ActivityTracing\SampleDotnet.MassTransit.ActivityTracing.csproj" />
   </ItemGroup>
 
 </Project>

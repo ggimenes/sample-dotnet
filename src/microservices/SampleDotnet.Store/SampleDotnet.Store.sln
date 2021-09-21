@@ -41,7 +41,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SampleDotnet.DDD.Data.Mongo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SampleDotnet.AspNet", "..\CommonPackages\SampleDotnet.Packages\SampleDotnet.AspNet\SampleDotnet.AspNet.csproj", "{50F7A899-BA81-40D4-BF1E-379453838040}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleDotnet.Store.Infra.Masstransit", "SampleDotnet.Store.Infra.Masstransit\SampleDotnet.Store.Infra.Masstransit.csproj", "{278934ED-500C-4AF9-A73C-978A311781F2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SampleDotnet.Store.Infra.Masstransit", "SampleDotnet.Store.Infra.Masstransit\SampleDotnet.Store.Infra.Masstransit.csproj", "{278934ED-500C-4AF9-A73C-978A311781F2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SampleDotnet.MassTransit.ActivityTracing", "..\CommonPackages\SampleDotnet.Packages\SampleDotnet.MassTransit.ActivityTracing\SampleDotnet.MassTransit.ActivityTracing.csproj", "{79BA97A3-6161-4CE7-91E8-4076102EB6B0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -109,6 +111,10 @@ Global
 		{278934ED-500C-4AF9-A73C-978A311781F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{278934ED-500C-4AF9-A73C-978A311781F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{278934ED-500C-4AF9-A73C-978A311781F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79BA97A3-6161-4CE7-91E8-4076102EB6B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79BA97A3-6161-4CE7-91E8-4076102EB6B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79BA97A3-6161-4CE7-91E8-4076102EB6B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79BA97A3-6161-4CE7-91E8-4076102EB6B0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -129,6 +135,7 @@ Global
 		{F4C5D301-7E1A-4C83-80ED-41207075E0D2} = {B1F3F879-3BD3-4B2A-8B92-B9108F9EFBFF}
 		{50F7A899-BA81-40D4-BF1E-379453838040} = {B1F3F879-3BD3-4B2A-8B92-B9108F9EFBFF}
 		{278934ED-500C-4AF9-A73C-978A311781F2} = {8763184A-05A2-4D7C-BD37-438C8A77890E}
+		{79BA97A3-6161-4CE7-91E8-4076102EB6B0} = {B1F3F879-3BD3-4B2A-8B92-B9108F9EFBFF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {05D122CC-B47D-4552-9E5A-CA17C388E1A6}

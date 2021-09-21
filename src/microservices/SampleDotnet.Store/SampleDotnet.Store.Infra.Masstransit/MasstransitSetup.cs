@@ -13,6 +13,7 @@ using SampleDotnet.Contracts.Financial.Payments;
 using SampleDotnet.Contracts.Security.Anti_Fraud;
 using SampleDotnet.Contracts.Shipment;
 using SampleDotnet.Contracts.Warehouse;
+using SampleDotnet.MassTransit.ActivityTracing;
 
 namespace SampleDotnet.Store.Infra.Masstransit
 {
@@ -57,6 +58,8 @@ namespace SampleDotnet.Store.Infra.Masstransit
 
                         h.PublisherConfirmation = true;
                     });
+
+                    cfg.PropagateActivityTracingContext(new MassTransitGlobalTraceInterceptor());
 
                     cfg.ReceiveEndpoint("re.store.order",e =>
                     {

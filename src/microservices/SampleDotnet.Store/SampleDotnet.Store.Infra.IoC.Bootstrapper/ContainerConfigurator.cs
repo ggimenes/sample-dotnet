@@ -7,11 +7,9 @@ using SampleDotnet.DDD.Data.MongoDb;
 using SampleDotnet.Store.AppService.Checkouts.Orders;
 using SampleDotnet.Store.Domain.Checkouts.Orders;
 using SampleDotnet.Store.Infra.Masstransit;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using OpenTelemetry.Resources;
+using OpenTelemetry.Trace;
+using SampleDotnet.MassTransit.ActivityTracing;
 
 namespace SampleDotnet.Store.Infra.IoC.Bootstrapper
 {
@@ -19,6 +17,9 @@ namespace SampleDotnet.Store.Infra.IoC.Bootstrapper
     {
         public IServiceCollection AddServices(IServiceCollection services, IConfiguration configuration)
         {
+            // OpenTelemetry
+            AddOpenTelemetry(services);
+
             // Masstransit            
             services.AddStoreMasstransit(configuration);
 
@@ -37,6 +38,15 @@ namespace SampleDotnet.Store.Infra.IoC.Bootstrapper
             services.AddTransient(typeof(IRepository<Order>), typeof(MongoRepository<Order>));
 
             return services;
+        }
+
+        private static void AddOpenTelemetry(IServiceCollection services)
+        {
+            services.AddOpenTelemetryTracing((builder) => builder
+                .AddAspNetCoreInstrumentation()
+                .AddOtlpExporter()
+                .AddSource(ActivitySourceMT.Instance.Name)
+                .SetResourceBuilder(ResourceBuilder.CreateDefault().AddService("SampleDotnet.Store.Api")));
         }
 
         private void AddMongoDb(IServiceCollection services, IConfiguration configuration)
