@@ -2,7 +2,7 @@
 # Sample project
 This is a sample of a microservice based project  
 
-Disclaimer: still is under development
+Disclaimer: it's still under development
 
 ## Topology
 ![topology](doc/diagrams/topology.png?raw=true "Topology")
