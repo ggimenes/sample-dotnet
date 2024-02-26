@@ -1,6 +1,4 @@
-﻿using Automatonymous;
-using MassTransit;
-using MassTransit.Saga;
+﻿using MassTransit;
 using Microsoft.Extensions.Logging;
 using SampleDotnet.Contracts.Financial.Payments;
 using SampleDotnet.Contracts.Security.Anti_Fraud;
@@ -8,10 +6,6 @@ using SampleDotnet.Contracts.Shipment;
 using SampleDotnet.Contracts.Store.Checkouts.Orders;
 using SampleDotnet.Contracts.Warehouse;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SampleDotnet.Store.Workflows.Checkouts.Orders
 {

@@ -1,5 +1,4 @@
 ﻿using SampleDotnet.Contracts.Store.Checkouts.Orders;
-using SampleDotnet.DDD;
 using SampleDotnet.DDD.Abstractions;
 using SampleDotnet.Store.Domain.Checkouts.Orders;
 using System;

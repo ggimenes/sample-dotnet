@@ -6,7 +6,6 @@ using SampleDotnet.MasstransitConfiguration;
 using SampleDotnet.Store.Workflows.Checkouts.Orders;
 using System;
 using System.Security.Authentication;
-using MassTransit.MongoDbIntegration.Saga;
 using SampleDotnet.Contracts.Store.Checkouts.Orders;
 using SampleDotnet.Contracts.Financial.Payments;
 using SampleDotnet.Contracts.Security.Anti_Fraud;

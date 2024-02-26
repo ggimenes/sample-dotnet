@@ -1,6 +1,4 @@
-﻿using Automatonymous;
-using MassTransit;
-using MassTransit.Saga;
+﻿using MassTransit;
 using System;
 
 namespace SampleDotnet.Store.Workflows.Checkouts.Orders

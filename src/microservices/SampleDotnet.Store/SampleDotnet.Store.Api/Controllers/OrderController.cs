@@ -1,16 +1,10 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Server.HttpSys;
+﻿using Microsoft.AspNetCore.Mvc;
 using SampleDotnet.AspNet;
 using SampleDotnet.Contracts.Store.Checkouts.Orders;
 using SampleDotnet.DDD.Abstractions;
 using SampleDotnet.Store.AppService.Checkouts.Orders;
 using SampleDotnet.Store.AppService.Checkouts.Orders.DTOs;
 using Swashbuckle.AspNetCore.Annotations;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace SampleDotnet.Store.Api.Controllers
 {

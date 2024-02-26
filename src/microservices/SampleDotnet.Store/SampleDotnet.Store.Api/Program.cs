@@ -1,5 +1,3 @@
-
-using Microsoft.Extensions.Configuration;
 using SampleDotnet.Store.Infra.IoC.Bootstrapper;
 using Serilog;
 

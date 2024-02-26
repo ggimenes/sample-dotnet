@@ -1,8 +1,6 @@
-﻿using SampleDotnet.Contracts.Store.Checkouts.Orders;
-using SampleDotnet.DDD.Abstractions;
+﻿using SampleDotnet.DDD.Abstractions;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace SampleDotnet.Contracts.Store.Checkouts.Orders
 {

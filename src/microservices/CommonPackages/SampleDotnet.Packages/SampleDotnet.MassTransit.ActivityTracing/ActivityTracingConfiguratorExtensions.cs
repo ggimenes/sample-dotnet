@@ -1,6 +1,3 @@
-using OpenTelemetry;
-using OpenTelemetry.Trace;
-using System.Diagnostics;
 using MassTransit;
 
 namespace SampleDotnet.MassTransit.ActivityTracing
