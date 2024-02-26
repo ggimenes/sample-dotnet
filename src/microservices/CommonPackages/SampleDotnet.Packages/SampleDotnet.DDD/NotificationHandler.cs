@@ -13,13 +13,13 @@ namespace SampleDotnet.DDD
         private readonly IEventDispatcher _eventDispatcher;
         private readonly ILoggerFactory _factory;
 
-        public INotification Notification { get; set; }
+        public BaseNotification Notification { get; set; }
 
         public NotificationHandler(IEventDispatcher eventDispatcher, ILoggerFactory factory, INotification notification)
         {
             this._eventDispatcher = eventDispatcher;
             this._factory = factory;
-            Notification = notification;
+            Notification = (BaseNotification)notification;
         }
 
         public async Task<Guid> DispatchAndFlush()

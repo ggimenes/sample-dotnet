@@ -1,6 +1,14 @@
-﻿using Microsoft.OpenApi.Models;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.OpenApi.Any;
+using Microsoft.OpenApi.Models;
+using SampleDotnet.Contracts.Store.Checkouts.Orders;
 using Swashbuckle.AspNetCore.Filters;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using System.Reflection;
+using System.Threading.Tasks;
 
 namespace SampleDotnet.Store.Api.Swagger
 {

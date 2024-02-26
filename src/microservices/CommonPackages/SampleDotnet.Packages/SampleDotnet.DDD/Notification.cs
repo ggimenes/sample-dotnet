@@ -9,38 +9,38 @@ using System.Threading.Tasks;
 
 namespace SampleDotnet.DDD
 {
-    public class Notification : INotification
+    public class Notification : BaseNotification
     {
         private readonly List<IDomainEvent> _events = new List<IDomainEvent>();
         private readonly List<ILogEntry> _logs = new List<ILogEntry>();
 
-        public IEnumerable<IDomainEvent> Events => _events;
-        public IEnumerable<ILogEntry> Logs => _logs;
+        public override IEnumerable<IDomainEvent> Events => _events;
+        public override IEnumerable<ILogEntry> Logs => _logs;
         public ValidationResult ValidationResult { get; private set; } = new ValidationResult();
 
-        public bool HasErrors => ValidationResult.HasErrors;
+        public override bool HasErrors => ValidationResult.HasErrors;
 
-        public void Error(string message)
+        public override void Error(string message)
         {
             ValidationResult.AddError(message);
         }
 
-        public void Event(IDomainEvent domainEvent)
+        public override void Event(IDomainEvent domainEvent)
         {
             _events.Add(domainEvent);
         }
 
-        public string GetValidationErrorsFormatted()
+        public override string GetValidationErrorsFormatted()
         {
             return ValidationResult.ToString();
         }
 
-        public IEnumerable<string> GetValidationErrors()
+        public override IEnumerable<string> GetValidationErrors()
         {
             return ValidationResult.Errors;
         }
 
-        public void LogDebug(object sender, string message, object additionalData = null)
+        public override void LogDebug(object sender, string message, object additionalData = null)
         {
             var entry = new LogEntry()
             {
@@ -54,7 +54,7 @@ namespace SampleDotnet.DDD
             _logs.Add(entry);
         }
 
-        public void LogError(object sender, string message, object additionalData = null)
+        public override void LogError(object sender, string message, object additionalData = null)
         {
             var entry = new LogEntry()
             {
@@ -68,7 +68,7 @@ namespace SampleDotnet.DDD
             _logs.Add(entry);
         }
 
-        public void LogError(object sender, string message, Exception exception, object additionalData = null)
+        public override void LogError(object sender, string message, Exception exception, object additionalData = null)
         {
             var entry = new LogEntry()
             {
@@ -83,7 +83,7 @@ namespace SampleDotnet.DDD
             _logs.Add(entry);
         }
 
-        public void LogInfo(object sender, string message, object additionalData = null)
+        public override void LogInfo(object sender, string message, object additionalData = null)
         {
             var entry = new LogEntry()
             {
@@ -97,7 +97,7 @@ namespace SampleDotnet.DDD
             _logs.Add(entry);
         }
 
-        public void LogTrace(object sender, string message, object additionalData = null)
+        public override void LogTrace(object sender, string message, object additionalData = null)
         {
             var entry = new LogEntry()
             {
@@ -111,7 +111,7 @@ namespace SampleDotnet.DDD
             _logs.Add(entry);
         }
 
-        public void LogWarning(object sender, string message, object additionalData = null)
+        public override void LogWarning(object sender, string message, object additionalData = null)
         {
             var entry = new LogEntry()
             {
@@ -125,7 +125,7 @@ namespace SampleDotnet.DDD
             _logs.Add(entry);
         }
 
-        public INotification Combine(INotification b)
+        public override INotification Combine(INotification b)
         {
             _events.AddRange(b.Events);
             _logs.AddRange(b.Logs);

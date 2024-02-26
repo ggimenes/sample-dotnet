@@ -10,6 +10,6 @@ namespace SampleDotnet.DDD.Abstractions
         LogLevel LogLevel { get; set; }
         string Message { get; set; }
         object Sender { get; set; }
-        public Exception Exception { get; set; }
+        Exception Exception { get; set; }
     }
 }

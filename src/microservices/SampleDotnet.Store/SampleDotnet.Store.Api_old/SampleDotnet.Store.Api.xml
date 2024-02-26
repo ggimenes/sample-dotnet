@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SampleDotnet.Store.Api</name>
+    </assembly>
+    <members>
+        <member name="T:SampleDotnet.Store.Api.Controllers.OrderController">
+            <summary>
+            Controller to manage customer orders
+            </summary>
+        </member>
+        <member name="M:SampleDotnet.Store.Api.Controllers.OrderController.PostSubmitOrder(SampleDotnet.Contracts.Store.Checkouts.Orders.SubmitOrderCommand)">
+            <summary>
+            Submit a new order for the client
+            </summary>
+            <remarks>
+            Sample request:
+                
+                 {
+                    "createdAt": "2021-08-29T22:14:15.944Z",
+                    "customerId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                    "items": [
+                      {
+                        "productId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                        "quantity": 1,
+                        "value": 100
+                      }
+                    ],
+                    "payment": {
+                      "paymentMethod": "Credit",
+                      "cardName": "a name",
+                      "cardNumber": "5555555555554444",
+                      "expiration": "2021-08-29T22:14:15.944Z",
+                      "securityCode": 123,
+                      "value": 100
+                    }
+                 }
+            
+            </remarks>
+            <param name="submitOrderCommand">Order and payment data</param>
+            <returns>Order id and internal track number</returns>
+        </member>
+    </members>
+</doc>

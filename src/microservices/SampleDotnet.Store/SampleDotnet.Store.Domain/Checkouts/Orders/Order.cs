@@ -13,7 +13,7 @@ namespace SampleDotnet.Store.Domain.Checkouts.Orders
     {
         private List<OrderItem> _items = new List<OrderItem>();
 
-        public INotification Notification { get; set; } = new Notification();
+        public BaseNotification Notification { get; set; } = new Notification();
 
         public IEnumerable<OrderItem> Items { get => _items; private set => _items = value.ToList(); }
         public DateTime CreatedAt { get; private set; }

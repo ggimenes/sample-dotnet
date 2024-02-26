@@ -5,7 +5,7 @@ namespace SampleDotnet.DDD.Abstractions
 {
     public interface INotificationHandler
     {
-        INotification Notification { get; set; }
+        BaseNotification Notification { get; set; }
 
         /// <summary>
         /// Dispatch events and flush log records

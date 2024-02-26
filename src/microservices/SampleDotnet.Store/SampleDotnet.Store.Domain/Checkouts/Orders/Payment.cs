@@ -15,7 +15,7 @@ namespace SampleDotnet.Store.Domain.Checkouts.Orders
         public int SecurityCode { get; private set; }
         public decimal Value { get; private set; }
 
-        public INotification Notification { get; set; } = new Notification();
+        public BaseNotification Notification { get; set; } = new Notification();
 
         private Payment()
         {

@@ -10,11 +10,11 @@ namespace SampleDotnet.Store.AppService.Checkouts.Orders
     public class OrderBuilder : IOrderBuilder
     {
         private Order _order;
-        private INotification _notification;
+        private BaseNotification _notification;
 
         public OrderBuilder(INotification notification)
         {
-            _notification = notification;
+            _notification = (BaseNotification)notification;
         }
         public OrderBuilder FromCommand(SubmitOrderCommand submitOrderCommand)
         {
