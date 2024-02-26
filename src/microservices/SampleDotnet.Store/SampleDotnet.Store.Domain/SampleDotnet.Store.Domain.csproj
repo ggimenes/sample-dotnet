@@ -7,13 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="MongoDbGenericRepository" Version="1.4.7" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\..\CommonPackages\SampleDotnet.Packages\SampleDotnet.Contracts\SampleDotnet.Contracts.csproj" />
     <ProjectReference Include="..\..\CommonPackages\SampleDotnet.Packages\SampleDotnet.DDD.Abstractions\SampleDotnet.DDD.Abstractions.csproj" />
     <ProjectReference Include="..\..\CommonPackages\SampleDotnet.Packages\SampleDotnet.DDD\SampleDotnet.DDD.csproj" />
+    <ProjectReference Include="..\..\CommonPackages\SampleDotnet.Packages\SampleDotnet.Repository.Abstractions\SampleDotnet.Repository.Abstractions.csproj" />
   </ItemGroup>
 
 </Project>

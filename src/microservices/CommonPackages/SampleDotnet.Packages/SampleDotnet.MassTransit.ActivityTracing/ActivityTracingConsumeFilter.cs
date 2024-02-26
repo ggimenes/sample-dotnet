@@ -1,9 +1,6 @@
 using System.Diagnostics;
-using System.Reflection;
 using System.Threading.Tasks;
-using GreenPipes;
 using MassTransit;
-using Newtonsoft.Json;
 
 namespace SampleDotnet.MassTransit.ActivityTracing
 {

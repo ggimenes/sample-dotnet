@@ -42,7 +42,8 @@ namespace SampleDotnet.Store.Infra.IoC.Bootstrapper
 
         private static void AddOpenTelemetry(IServiceCollection services)
         {
-            services.AddOpenTelemetryTracing((builder) => builder
+            var builder = services.AddOpenTelemetry();
+            builder.WithTracing((builder) => builder
                 .AddAspNetCoreInstrumentation()
                 .AddOtlpExporter()
                 .AddSource(ActivitySourceMT.Instance.Name)

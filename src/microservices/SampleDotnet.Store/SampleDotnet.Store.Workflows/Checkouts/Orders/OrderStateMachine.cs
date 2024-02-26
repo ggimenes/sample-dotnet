@@ -1,4 +1,5 @@
 ﻿using Automatonymous;
+using MassTransit;
 using MassTransit.Saga;
 using Microsoft.Extensions.Logging;
 using SampleDotnet.Contracts.Financial.Payments;
@@ -106,12 +107,14 @@ namespace SampleDotnet.Store.Workflows.Checkouts.Orders
         public Event WorkflowCompleted { get; private set; }
         public Event PaymentAborted { get; private set; }
 
-        private void LogEvent<TInstance>(BehaviorContext<TInstance> x) where TInstance : SagaStateMachineInstance
+        private void LogEvent<TInstance>(BehaviorContext<TInstance> x) where TInstance : class, SagaStateMachineInstance
         {
             _logger.LogInformation($"CorrelationId: {x.Instance.CorrelationId} - Event {x.Event.Name} received");
         }
 
-        private void LogEvent<TInstance, TData>(BehaviorContext<TInstance, TData> x) where TInstance : SagaStateMachineInstance
+        private void LogEvent<TInstance, TData>(BehaviorContext<TInstance, TData> x) 
+            where TInstance : class, SagaStateMachineInstance
+            where TData : class
         {
             _logger.LogInformation($"CorrelationId: {x.Instance.CorrelationId} - Event {x.Event.Name} received");
         }

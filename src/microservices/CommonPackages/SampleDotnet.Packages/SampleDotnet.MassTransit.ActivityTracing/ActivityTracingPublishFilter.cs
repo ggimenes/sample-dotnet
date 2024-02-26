@@ -1,12 +1,5 @@
 using System.Diagnostics;
 using System.Threading.Tasks;
-using GreenPipes;
-using System.Linq;
-using MassTransit.RabbitMqTransport;
-using System;
-using MassTransit.Internals.Reflection;
-using System.Reflection;
-using Newtonsoft.Json;
 using MassTransit;
 
 namespace SampleDotnet.MassTransit.ActivityTracing

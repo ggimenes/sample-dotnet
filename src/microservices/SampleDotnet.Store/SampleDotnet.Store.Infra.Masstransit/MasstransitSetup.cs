@@ -1,5 +1,4 @@
-﻿using GreenPipes;
-using MassTransit;
+﻿using MassTransit;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
@@ -14,6 +13,7 @@ using SampleDotnet.Contracts.Security.Anti_Fraud;
 using SampleDotnet.Contracts.Shipment;
 using SampleDotnet.Contracts.Warehouse;
 using SampleDotnet.MassTransit.ActivityTracing;
+using Microsoft.Extensions.Hosting;
 
 namespace SampleDotnet.Store.Infra.Masstransit
 {
@@ -61,7 +61,7 @@ namespace SampleDotnet.Store.Infra.Masstransit
 
                     cfg.PropagateActivityTracingContext(new MassTransitGlobalTraceInterceptor());
 
-                    cfg.ReceiveEndpoint("re.store.order",e =>
+                    cfg.ReceiveEndpoint("re.store.order", e =>
                     {
                         e.ConcurrentMessageLimit = masstransitConfig.OrderStateMachine.ConcurrentMessageLimit;
                         e.PrefetchCount = masstransitConfig.OrderStateMachine.PrefetchCount;
@@ -86,7 +86,15 @@ namespace SampleDotnet.Store.Infra.Masstransit
                 });
             });
 
-            services.AddMassTransitHostedService();
+            services.Configure<MassTransitHostOptions>(options =>
+            {
+                options.WaitUntilStarted = true;
+                options.StartTimeout = TimeSpan.FromSeconds(30);
+                options.StopTimeout = TimeSpan.FromMinutes(1);
+            });
+
+            services.Configure<HostOptions>(
+                opts => opts.ShutdownTimeout = TimeSpan.FromMinutes(1));
 
             return services;
         }

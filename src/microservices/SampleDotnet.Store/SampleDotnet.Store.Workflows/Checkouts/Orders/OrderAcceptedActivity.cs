@@ -1,5 +1,4 @@
 ﻿using Automatonymous;
-using GreenPipes;
 using MassTransit;
 using Microsoft.Extensions.Logging;
 using SampleDotnet.Contracts.Financial.Payments;
@@ -14,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace SampleDotnet.Store.Workflows.Checkouts.Orders
 {
-    public class OrderAcceptedActivity : Activity<OrderState, OrderAccepted>
+    public class OrderAcceptedActivity : IStateMachineActivity<OrderState, OrderAccepted>
     {
         private readonly ILogger<OrderAcceptedActivity> _logger;
         private readonly ISendEndpointProvider _sendEndpointProvider;
@@ -30,7 +29,7 @@ namespace SampleDotnet.Store.Workflows.Checkouts.Orders
             visitor.Visit(this);
         }
 
-        public async Task Execute(BehaviorContext<OrderState, OrderAccepted> context, Behavior<OrderState, OrderAccepted> next)
+        public async Task Execute(BehaviorContext<OrderState, OrderAccepted> context, IBehavior<OrderState, OrderAccepted> next)
         {
             var endpointSubmitPayment = await _sendEndpointProvider.GetSendEndpoint(new Uri("queue:submit-payment"));
             var endpointValidateFraud = await _sendEndpointProvider.GetSendEndpoint(new Uri("queue:validate-fraud"));
@@ -45,7 +44,7 @@ namespace SampleDotnet.Store.Workflows.Checkouts.Orders
             await next.Execute(context).ConfigureAwait(false);
         }      
 
-        public Task Faulted<TException>(BehaviorExceptionContext<OrderState, OrderAccepted, TException> context, Behavior<OrderState, OrderAccepted> next) where TException : Exception
+        public Task Faulted<TException>(BehaviorExceptionContext<OrderState, OrderAccepted, TException> context, IBehavior<OrderState, OrderAccepted> next) where TException : Exception
         {
             return next.Faulted(context);
         }

@@ -1,15 +1,13 @@
-﻿using MongoDbGenericRepository.Models;
-using SampleDotnet.DDD;
+﻿using SampleDotnet.DDD;
 using SampleDotnet.DDD.Abstractions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using SampleDotnet.Repository.Abstractions;
 
 namespace SampleDotnet.Store.Domain.Checkouts.Orders
 {
-    public class Order : Entity, IDocument
+    public class Order : Entity, IDocumentModel
     {
         private List<OrderItem> _items = new List<OrderItem>();
 

@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34616.47
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleDotnet.Store.Api", "SampleDotnet.Store.Api\SampleDotnet.Store.Api.csproj", "{53CD92CE-9297-4C28-BA8F-CFC3A13BCD15}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SampleDotnet.Store.Api", "SampleDotnet.Store.Api\SampleDotnet.Store.Api.csproj", "{53CD92CE-9297-4C28-BA8F-CFC3A13BCD15}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Inbound", "1 - Inbound", "{DA700E4C-0EC2-419E-8206-F03FA04FB3DD}"
 EndProject
@@ -44,6 +44,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SampleDotnet.AspNet", "..\CommonPackages\SampleDotnet.Packages\SampleDotnet.AspNet\SampleDotnet.AspNet.csproj", "{8BE74C61-CDCB-4AB0-B965-3B64FB4A2FB6}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SampleDotnet.Store.Infra.Masstransit", "SampleDotnet.Store.Infra.Masstransit\SampleDotnet.Store.Infra.Masstransit.csproj", "{EA4A8A4C-5031-4E81-9B26-3ED9B54F5FE7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleDotnet.Repository.Abstractions", "..\CommonPackages\SampleDotnet.Packages\SampleDotnet.Repository.Abstractions\SampleDotnet.Repository.Abstractions.csproj", "{B1FDF23A-F759-4858-B34B-08B1774F24B6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -115,6 +117,10 @@ Global
 		{EA4A8A4C-5031-4E81-9B26-3ED9B54F5FE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EA4A8A4C-5031-4E81-9B26-3ED9B54F5FE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EA4A8A4C-5031-4E81-9B26-3ED9B54F5FE7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1FDF23A-F759-4858-B34B-08B1774F24B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1FDF23A-F759-4858-B34B-08B1774F24B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1FDF23A-F759-4858-B34B-08B1774F24B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1FDF23A-F759-4858-B34B-08B1774F24B6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -136,6 +142,7 @@ Global
 		{48F3A955-92C0-4509-9E0E-935A0D196620} = {5D0B39DE-10E3-4783-A6AD-466DFEF41C7A}
 		{8BE74C61-CDCB-4AB0-B965-3B64FB4A2FB6} = {5D0B39DE-10E3-4783-A6AD-466DFEF41C7A}
 		{EA4A8A4C-5031-4E81-9B26-3ED9B54F5FE7} = {D1786B33-F88F-4F32-A365-C2E9F0393325}
+		{B1FDF23A-F759-4858-B34B-08B1774F24B6} = {5D0B39DE-10E3-4783-A6AD-466DFEF41C7A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D852E656-AA56-4841-992F-EB85242DBA16}
